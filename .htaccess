@@ -1,0 +1,11 @@
+<Files ner.py>
+    SetHandler wsgi-script
+    Options +ExecCGI
+</Files>
+
+RewriteEngine on               
+RewriteBase /                  
+RewriteCond %{REQUEST_URI} !^/robots.txt
+RewriteCond %{REQUEST_URI} !^/static    
+RewriteCond %{REQUEST_URI} !^(/.*)+ner.py
+RewriteRule ^(.*)$ ner/ner.py/$1 [PT]
